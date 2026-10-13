@@ -37,6 +37,16 @@ test("control-flow and abort errors are never retried", () => {
   assert.equal(isTransientModelError(undefined), false);
 });
 
+test("depleted prepaid credits are a billing state, not transient", () => {
+  const e = Object.assign(
+    new Error(
+      "Your prepayment credits are depleted. Please go to AI Studio. Learn more.",
+    ),
+    { status: 402 },
+  );
+  assert.equal(isTransientModelError(e), false);
+});
+
 test("retryDecision allows bounded, deadline-aware retries", () => {
   const base = {
     error: transient(503),

@@ -80,6 +80,8 @@ const TRANSIENT_MODEL_STATUSES = new Set([429, 500, 502, 503, 504]);
 export function isTransientModelError(e: unknown): boolean {
   if (!(e instanceof Error) || e instanceof DomainError) return false;
   if (e.name === "AbortError") return false;
+  // Depleted prepaid credits are a billing state, not something a retry can fix.
+  if (/credits are depleted/i.test(e.message)) return false;
   const status = (e as { status?: unknown }).status;
   if (typeof status === "number" && TRANSIENT_MODEL_STATUSES.has(status))
     return true;
