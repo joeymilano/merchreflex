@@ -1,6 +1,6 @@
 # Implementation record
 
-The approved plan is implemented in a new repository, independent of Finfold and the portfolio site.
+The core prototype is implemented in a new repository, independent of Finfold and the portfolio site. Competition acceptance is incomplete: see HANDOFF_ZCODE.md and VALIDATION.md for measured results and outstanding work.
 
 ## Scope
 
@@ -36,3 +36,6 @@ One SKU, 20 feedback records, two JPEG/PNG images up to 5 MB each, 12 runs per s
 - Same-model semantic checking can share correlated errors. All proposed new facts require human review.
 - A public demo can consume shared quota; it does not have production anti-abuse guarantees.
 - Budget alerts are not spending caps. App quotas and instance limits reduce, but do not mathematically guarantee, total infrastructure spend.
+
+- Session access expires after 24 hours, but automatic Firestore TTL and bucket retention cleanup are not configured. Expiry is not deletion.
+- Request-size checks do not yet fully bound chunked body buffering before parsing. Harden this before admitting untrusted bulk uploads.

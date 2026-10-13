@@ -1,0 +1,105 @@
+{
+  "caseId": "05-2",
+  "mode": "baseline",
+  "sku": "desk-light",
+  "split": "development",
+  "category": "quality_fulfillment",
+  "expected": "human_action",
+  "at": "2026-10-12T16:46:03.257Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "A desk lamp for everyday work.",
+      "imageCaption": "Lamp pictured with cable.",
+      "faq": "Includes everything you need."
+    },
+    "evidence": [
+      {
+        "id": "e5bf85b5-f9a2-4698-b867-1d45eeb3041f",
+        "sku": "desk-light",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Synthetic merchant specification: One lamp included. USB-C cable and power adapter are not included. Input power 5V. No battery. No waterproof certification.",
+        "revision": 1,
+        "hash": "46a2569cf0437e257d6e61760db1c28d24af2523b9656139ed5bd9640b42f284",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:46:03.256Z"
+      },
+      {
+        "id": "f7718cfc-39ec-41f8-954e-2ed1424cde45",
+        "sku": "desk-light",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "The delivery courier lost my package.",
+        "revision": 1,
+        "hash": "e62bbb12c3be3841f0af4e2c4d68ff2d29863e6c27e3dfd838add1d1786da2ad",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:46:03.257Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 5774,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "lost-package-delivery",
+        "title": "Lost package delivery issue",
+        "type": "fulfillment",
+        "status": "human_action",
+        "explanation": "Customer feedback mentions that the courier lost the package. This is a fulfillment issue requiring investigation with the courier rather than a product copy modification.",
+        "evidenceIds": [
+          "f7718cfc-39ec-41f8-954e-2ed1424cde45"
+        ]
+      },
+      {
+        "id": "unsupported-faq-package-contents",
+        "title": "FAQ claim that everything is included is contradicted by specification",
+        "type": "unsupported_claim",
+        "status": "repairable",
+        "explanation": "The FAQ states 'Includes everything you need', but the merchant specification confirms that the USB-C cable and power adapter are not included.",
+        "evidenceIds": [
+          "e5bf85b5-f9a2-4698-b867-1d45eeb3041f"
+        ]
+      }
+    ],
+    "changes": [
+      {
+        "field": "faq",
+        "value": "One lamp is included. USB-C cable and power adapter are not included.",
+        "claims": [
+          {
+            "text": "One lamp is included.",
+            "evidenceIds": [
+              "e5bf85b5-f9a2-4698-b867-1d45eeb3041f"
+            ]
+          },
+          {
+            "text": "USB-C cable and power adapter are not included.",
+            "evidenceIds": [
+              "e5bf85b5-f9a2-4698-b867-1d45eeb3041f"
+            ]
+          }
+        ],
+        "issueIds": [
+          "unsupported-faq-package-contents"
+        ]
+      }
+    ]
+  },
+  "checks": [],
+  "metrics": {
+    "calls": 1,
+    "tools": 0,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 1616,
+      "output": 459,
+      "estimatedUsd": 0.0058665
+    },
+    "validationNotes": []
+  }
+}

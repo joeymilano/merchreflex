@@ -1,0 +1,19 @@
+{
+  "at": "2026-10-13T02:45:02.557Z",
+  "origin": "https://merchreflex-927668522599.asia-southeast1.run.app",
+  "status": "passed",
+  "durationMs": 20735,
+  "checks": [
+    "unauthenticated read denied",
+    "Origin enforced",
+    "CSRF enforced",
+    "live agent completed",
+    "session isolation",
+    "unapproved publish denied",
+    "approved publish",
+    "idempotent replay",
+    "served page verified",
+    "rollback",
+    "restored page verified"
+  ]
+}

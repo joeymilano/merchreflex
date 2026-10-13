@@ -22,7 +22,7 @@ import {
   safeError,
   activeEvidence,
 } from "@/lib/domain";
-import { runAgent } from "@/lib/agent";
+import { runAgent, AGENT_PROMPT_HASH } from "@/lib/agent";
 import { auth, body, checkOrigin, errorResponse, json } from "@/lib/http";
 import { fail, DomainError } from "@/lib/types";
 export const runtime = "nodejs";
@@ -40,6 +40,7 @@ export async function GET(
         model: process.env.GEMINI_MODEL || "gemini-3.8-flash",
         storage: process.env.STORAGE_DRIVER || "local",
         version: "0.1.0",
+        promptHash: AGENT_PROMPT_HASH,
       });
     const s = await auth(req);
     if (p[0] === "session") return json(s);

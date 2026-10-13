@@ -1,0 +1,94 @@
+{
+  "caseId": "02-1",
+  "mode": "workflow",
+  "sku": "travel-mug",
+  "split": "development",
+  "category": "unsupported_claim",
+  "expected": "repairable",
+  "at": "2026-10-12T16:42:39.199Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "Keeps drinks hot all day.",
+      "imageCaption": "Your daily mug.",
+      "faq": "Easy care for every day."
+    },
+    "evidence": [
+      {
+        "id": "b03e5306-626e-4a6b-9ac9-e8403ab015fb",
+        "sku": "travel-mug",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Synthetic merchant specification: One 350 ml stainless steel mug with lid. Hand wash only. Not microwave safe. No temperature-retention duration has been verified.",
+        "revision": 1,
+        "hash": "ffc7ec39e46c1a625242943b5fe0ab20ec11b885d83f1910d1175b2c5d1f6387",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:42:39.199Z"
+      },
+      {
+        "id": "26c2d51c-c931-45d1-80f6-e15b98b5e713",
+        "sku": "travel-mug",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "It did not stay hot all day.",
+        "revision": 1,
+        "hash": "786ae2fca0f68e66736f8ed9a149637ad268fa6dadb1c28411763599aa080c05",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:42:39.199Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 8313,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "unsupported-temperature-retention",
+        "title": "Unsupported all-day heat retention claim",
+        "type": "unsupported_claim",
+        "status": "repairable",
+        "explanation": "The short description claims the mug keeps drinks hot all day, but the merchant specification explicitly notes that no temperature-retention duration has been verified.",
+        "evidenceIds": [
+          "b03e5306-626e-4a6b-9ac9-e8403ab015fb"
+        ]
+      }
+    ],
+    "changes": [
+      {
+        "field": "shortDescription",
+        "value": "One 350 ml stainless steel mug with lid.",
+        "claims": [
+          {
+            "text": "One 350 ml stainless steel mug with lid.",
+            "evidenceIds": [
+              "b03e5306-626e-4a6b-9ac9-e8403ab015fb"
+            ]
+          }
+        ],
+        "issueIds": [
+          "unsupported-temperature-retention"
+        ]
+      }
+    ]
+  },
+  "checks": [
+    "Allowed fields only",
+    "Active, same-product evidence",
+    "Complete replacement text checked by Gemini",
+    "Human approval still required"
+  ],
+  "metrics": {
+    "calls": 3,
+    "tools": 2,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 3712,
+      "output": 398,
+      "estimatedUsd": 0.008553
+    },
+    "validationNotes": []
+  }
+}

@@ -2,10 +2,11 @@ import assert from "node:assert/strict";
 import { mkdir, writeFile } from "node:fs/promises";
 const smokeId = process.env.SMOKE_ID || "latest";
 const origin = process.env.TEST_ORIGIN || "http://localhost:3147";
+const writeOrigin = process.env.WRITE_ORIGIN || origin;
 const newSession = async () => {
   const r = await fetch(origin + "/api/sessions", {
     method: "POST",
-    headers: { Origin: origin },
+    headers: { Origin: writeOrigin },
   });
   assert.equal(r.status, 201);
   return {
@@ -17,7 +18,7 @@ async function main() {
   const { cookie, s } = await newSession();
   const headers = {
     cookie,
-    Origin: origin,
+    Origin: writeOrigin,
     "Content-Type": "application/json",
     "x-csrf-token": s.csrf,
   };
@@ -81,7 +82,7 @@ async function main() {
         method: "POST",
         headers: {
           cookie: foreign.cookie,
-          Origin: origin,
+          Origin: writeOrigin,
           "Content-Type": "application/json",
           "x-csrf-token": foreign.s.csrf,
         },

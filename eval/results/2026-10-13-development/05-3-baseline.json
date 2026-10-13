@@ -1,0 +1,105 @@
+{
+  "caseId": "05-3",
+  "mode": "baseline",
+  "sku": "desk-light",
+  "split": "development",
+  "category": "quality_fulfillment",
+  "expected": "human_action",
+  "at": "2026-10-12T16:46:10.021Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "A desk lamp for everyday work.",
+      "imageCaption": "Lamp pictured with cable.",
+      "faq": "Includes everything you need."
+    },
+    "evidence": [
+      {
+        "id": "dc0ee7fb-52ad-47a9-af9d-7eee2c5f57ac",
+        "sku": "desk-light",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Synthetic merchant specification: One lamp included. USB-C cable and power adapter are not included. Input power 5V. No battery. No waterproof certification.",
+        "revision": 1,
+        "hash": "46a2569cf0437e257d6e61760db1c28d24af2523b9656139ed5bd9640b42f284",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:46:10.021Z"
+      },
+      {
+        "id": "f50adbba-aa71-4365-adbc-7ebfc4b5db35",
+        "sku": "desk-light",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "The lamp arrived with a cracked housing.",
+        "revision": 1,
+        "hash": "aa956150f9f51cd453212940cb8db6d2624eaaab45af4c2967326c1795dab951",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:46:10.021Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 4559,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "issue-missing-accessories",
+        "title": "FAQ misleadingly claims package includes everything needed",
+        "type": "accessory",
+        "status": "repairable",
+        "explanation": "The FAQ states 'Includes everything you need,' but the specification states that the USB-C cable and power adapter are not included.",
+        "evidenceIds": [
+          "dc0ee7fb-52ad-47a9-af9d-7eee2c5f57ac"
+        ]
+      },
+      {
+        "id": "issue-cracked-housing-feedback",
+        "title": "Customer feedback regarding cracked housing upon delivery",
+        "type": "quality",
+        "status": "human_action",
+        "explanation": "Evaluation feedback notes that the lamp arrived with a cracked housing, which indicates a manufacturing or shipping quality issue requiring human action rather than a product copy change.",
+        "evidenceIds": [
+          "f50adbba-aa71-4365-adbc-7ebfc4b5db35"
+        ]
+      }
+    ],
+    "changes": [
+      {
+        "field": "faq",
+        "value": "One lamp is included. A USB-C cable and power adapter are not included.",
+        "claims": [
+          {
+            "text": "One lamp is included.",
+            "evidenceIds": [
+              "dc0ee7fb-52ad-47a9-af9d-7eee2c5f57ac"
+            ]
+          },
+          {
+            "text": "A USB-C cable and power adapter are not included.",
+            "evidenceIds": [
+              "dc0ee7fb-52ad-47a9-af9d-7eee2c5f57ac"
+            ]
+          }
+        ],
+        "issueIds": [
+          "issue-missing-accessories"
+        ]
+      }
+    ]
+  },
+  "checks": [],
+  "metrics": {
+    "calls": 1,
+    "tools": 0,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 1596,
+      "output": 435,
+      "estimatedUsd": 0.0056565
+    },
+    "validationNotes": []
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "caseId": "01-2",
+  "mode": "workflow",
+  "sku": "commuter-one",
+  "split": "development",
+  "category": "accessory",
+  "expected": "repairable",
+  "at": "2026-10-12T16:40:58.021Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "Your everyday carry, ready for anything. 100% waterproof protection for your daily commute.",
+      "imageCaption": "Everything you need for the everyday journey.",
+      "faq": "What comes with my order? Your Commuter One is ready for your next adventure."
+    },
+    "evidence": [
+      {
+        "id": "fda6d422-71ed-40bd-9c7c-2e64dadeabbf",
+        "sku": "commuter-one",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Merchant-confirmed synthetic specification: Package contains one backpack only. The water bottle shown is a styling prop and is NOT included. The fabric is suitable for light rain only, not immersion or heavy rain. Laptop sleeve dimensions and device compatibility have not been confirmed.",
+        "revision": 1,
+        "hash": "bc5a21ada8cfdfc3422e9dc5a8beac6bc8e046938c926a29d2d573434b3d2927",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:40:58.021Z"
+      },
+      {
+        "id": "cc9971ec-01c3-41c8-aa60-ea1983151510",
+        "sku": "commuter-one",
+        "kind": "image",
+        "label": "Product image · AI-generated demo",
+        "text": "AI-generated demonstration image. Only visible objects may be inferred.",
+        "revision": 1,
+        "hash": "4e89bc1bafde96e105b734c0e34e6dd7841f573420578a2747b819a51d3e7854",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:40:58.021Z",
+        "imageKey": "fixture:commuter-one",
+        "mimeType": "image/png"
+      },
+      {
+        "id": "f574796b-49f0-4908-a483-b92444b979f8",
+        "sku": "commuter-one",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "Only a backpack arrived. Where is the bottle?",
+        "revision": 1,
+        "hash": "e7636fbb357848ec3ff1704a70f2397bb196b29191ab359a27246b65886f2354",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:40:58.021Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 75246,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "waterproof-claim-unsupported",
+        "title": "Waterproof claim contradicts fabric specification",
+        "type": "unsupported_claim",
+        "status": "repairable",
+        "explanation": "The short description claims 100% waterproof protection, but merchant specification confirms fabric is suitable for light rain only and not immersion or heavy rain.",
+        "evidenceIds": [
+          "fda6d422-71ed-40bd-9c7c-2e64dadeabbf"
+        ]
+      },
+      {
+        "id": "water-bottle-prop-clarification",
+        "title": "Water bottle shown is not included",
+        "type": "accessory",
+        "status": "repairable",
+        "explanation": "Customer feedback and imagery indicate confusion regarding package contents. The merchant specification clarifies that the water bottle is a styling prop and not included, containing only one backpack.",
+        "evidenceIds": [
+          "fda6d422-71ed-40bd-9c7c-2e64dadeabbf",
+          "cc9971ec-01c3-41c8-aa60-ea1983151510",
+          "f574796b-49f0-4908-a483-b92444b979f8"
+        ]
+      },
+      {
+        "id": "missing-laptop-dimensions",
+        "title": "Laptop sleeve dimensions and device compatibility unconfirmed",
+        "type": "missing_info",
+        "status": "needs_info",
+        "explanation": "Laptop sleeve dimensions and device compatibility have not been confirmed in the specification.",
+        "evidenceIds": [
+          "fda6d422-71ed-40bd-9c7c-2e64dadeabbf"
+        ],
+        "question": "What are the laptop sleeve dimensions and supported device sizes?"
+      }
+    ],
+    "changes": [
+      {
+        "field": "shortDescription",
+        "value": "The fabric is suitable for light rain only, not immersion or heavy rain.",
+        "claims": [
+          {
+            "text": "The fabric is suitable for light rain only, not immersion or heavy rain.",
+            "evidenceIds": [
+              "fda6d422-71ed-40bd-9c7c-2e64dadeabbf"
+            ]
+          }
+        ],
+        "issueIds": [
+          "waterproof-claim-unsupported"
+        ]
+      },
+      {
+        "field": "imageCaption",
+        "value": "The water bottle shown is a styling prop and is NOT included.",
+        "claims": [
+          {
+            "text": "The water bottle shown is a styling prop and is NOT included.",
+            "evidenceIds": [
+              "fda6d422-71ed-40bd-9c7c-2e64dadeabbf"
+            ]
+          }
+        ],
+        "issueIds": [
+          "water-bottle-prop-clarification"
+        ]
+      },
+      {
+        "field": "faq",
+        "value": "Package contains one backpack only. The water bottle shown is a styling prop and is NOT included.",
+        "claims": [
+          {
+            "text": "Package contains one backpack only.",
+            "evidenceIds": [
+              "fda6d422-71ed-40bd-9c7c-2e64dadeabbf"
+            ]
+          },
+          {
+            "text": "The water bottle shown is a styling prop and is NOT included.",
+            "evidenceIds": [
+              "fda6d422-71ed-40bd-9c7c-2e64dadeabbf"
+            ]
+          }
+        ],
+        "issueIds": [
+          "water-bottle-prop-clarification"
+        ]
+      }
+    ]
+  },
+  "checks": [
+    "Allowed fields only",
+    "Active, same-product evidence",
+    "Complete replacement text checked by Gemini",
+    "Human approval still required"
+  ],
+  "metrics": {
+    "calls": 3,
+    "tools": 2,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 8245,
+      "output": 1215,
+      "estimatedUsd": 0.02148
+    },
+    "validationNotes": []
+  }
+}

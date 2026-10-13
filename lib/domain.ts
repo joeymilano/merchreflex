@@ -205,7 +205,9 @@ export function validateProposal(
       errors.push("Change must address a repairable issue");
     for (const claim of c.claims) {
       if (!c.value.includes(claim.text))
-        errors.push("Claim is not present in proposed text");
+        errors.push(
+          `Claim is not present verbatim in ${c.field}: ${claim.text}`,
+        );
       for (const id of claim.evidenceIds) {
         const e = active.find((e) => e.id === id);
         if (!e || e.sku !== s.sku)

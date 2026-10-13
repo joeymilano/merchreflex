@@ -1,0 +1,162 @@
+{
+  "caseId": "03-2",
+  "mode": "baseline",
+  "sku": "commuter-one",
+  "split": "development",
+  "category": "missing_info",
+  "expected": "needs_info",
+  "at": "2026-10-12T16:44:09.717Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "Your everyday carry, ready for anything. 100% waterproof protection for your daily commute.",
+      "imageCaption": "Everything you need for the everyday journey.",
+      "faq": "What comes with my order? Your Commuter One is ready for your next adventure."
+    },
+    "evidence": [
+      {
+        "id": "4cc0eb0b-c6d0-430f-89d1-2920e16b7dba",
+        "sku": "commuter-one",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Merchant-confirmed synthetic specification: Package contains one backpack only. The water bottle shown is a styling prop and is NOT included. The fabric is suitable for light rain only, not immersion or heavy rain. Laptop sleeve dimensions and device compatibility have not been confirmed.",
+        "revision": 1,
+        "hash": "bc5a21ada8cfdfc3422e9dc5a8beac6bc8e046938c926a29d2d573434b3d2927",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:44:09.717Z"
+      },
+      {
+        "id": "d35ac6db-00f7-4530-8a47-62c09209e848",
+        "sku": "commuter-one",
+        "kind": "image",
+        "label": "Product image · AI-generated demo",
+        "text": "AI-generated demonstration image. Only visible objects may be inferred.",
+        "revision": 1,
+        "hash": "4e89bc1bafde96e105b734c0e34e6dd7841f573420578a2747b819a51d3e7854",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:44:09.717Z",
+        "imageKey": "fixture:commuter-one",
+        "mimeType": "image/png"
+      },
+      {
+        "id": "b7a9aae1-5ecc-4951-a038-edfbc2298637",
+        "sku": "commuter-one",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "What are the internal sleeve dimensions?",
+        "revision": 1,
+        "hash": "59f6534b718a5c938238e4aae5b5254a783415a7c1c615400444395be8af6cd0",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:44:09.717Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 22125,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "issue-waterproof-unsupported",
+        "title": "Unsupported 100% waterproof claim",
+        "type": "unsupported_claim",
+        "status": "repairable",
+        "explanation": "The product copy claims 100% waterproof protection, but the confirmed specification states the fabric is suitable for light rain only and not immersion or heavy rain.",
+        "evidenceIds": [
+          "4cc0eb0b-c6d0-430f-89d1-2920e16b7dba"
+        ]
+      },
+      {
+        "id": "issue-accessory-prop",
+        "title": "Water bottle shown in image is not included",
+        "type": "accessory",
+        "status": "repairable",
+        "explanation": "The image shows a water bottle next to the backpack, but the specification confirms the package contains one backpack only and the bottle is a styling prop.",
+        "evidenceIds": [
+          "4cc0eb0b-c6d0-430f-89d1-2920e16b7dba",
+          "d35ac6db-00f7-4530-8a47-62c09209e848"
+        ]
+      },
+      {
+        "id": "issue-missing-sleeve-dimensions",
+        "title": "Missing laptop sleeve dimensions and device compatibility",
+        "type": "missing_info",
+        "status": "needs_info",
+        "explanation": "Customer feedback asks for internal sleeve dimensions, and the merchant specification confirms laptop sleeve dimensions and device compatibility have not been confirmed.",
+        "evidenceIds": [
+          "4cc0eb0b-c6d0-430f-89d1-2920e16b7dba",
+          "b7a9aae1-5ecc-4951-a038-edfbc2298637"
+        ],
+        "question": "What are the internal laptop sleeve dimensions and compatible device sizes?"
+      }
+    ],
+    "changes": [
+      {
+        "field": "shortDescription",
+        "value": "Your everyday carry, ready for anything. Suitable for light rain only.",
+        "claims": [
+          {
+            "text": "Your everyday carry, ready for anything.",
+            "evidenceIds": [
+              "4cc0eb0b-c6d0-430f-89d1-2920e16b7dba"
+            ]
+          },
+          {
+            "text": "Suitable for light rain only.",
+            "evidenceIds": [
+              "4cc0eb0b-c6d0-430f-89d1-2920e16b7dba"
+            ]
+          }
+        ],
+        "issueIds": [
+          "issue-waterproof-unsupported"
+        ]
+      },
+      {
+        "field": "imageCaption",
+        "value": "Green backpack shown with styling prop water bottle that is not included.",
+        "claims": [
+          {
+            "text": "Green backpack shown with styling prop water bottle that is not included.",
+            "evidenceIds": [
+              "4cc0eb0b-c6d0-430f-89d1-2920e16b7dba",
+              "d35ac6db-00f7-4530-8a47-62c09209e848"
+            ]
+          }
+        ],
+        "issueIds": [
+          "issue-accessory-prop"
+        ]
+      },
+      {
+        "field": "faq",
+        "value": "What comes with my order? Package contains one backpack only.",
+        "claims": [
+          {
+            "text": "What comes with my order? Package contains one backpack only.",
+            "evidenceIds": [
+              "4cc0eb0b-c6d0-430f-89d1-2920e16b7dba"
+            ]
+          }
+        ],
+        "issueIds": [
+          "issue-accessory-prop"
+        ]
+      }
+    ]
+  },
+  "checks": [],
+  "metrics": {
+    "calls": 1,
+    "tools": 0,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 3026,
+      "output": 861,
+      "estimatedUsd": 0.0109965
+    },
+    "validationNotes": []
+  }
+}

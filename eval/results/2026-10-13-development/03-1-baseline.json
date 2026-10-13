@@ -1,0 +1,168 @@
+{
+  "caseId": "03-1",
+  "mode": "baseline",
+  "sku": "commuter-one",
+  "split": "development",
+  "category": "missing_info",
+  "expected": "needs_info",
+  "at": "2026-10-12T16:43:45.644Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "Your everyday carry, ready for anything. 100% waterproof protection for your daily commute.",
+      "imageCaption": "Everything you need for the everyday journey.",
+      "faq": "What comes with my order? Your Commuter One is ready for your next adventure."
+    },
+    "evidence": [
+      {
+        "id": "b2420b51-39e3-48ec-8ef7-338636f32361",
+        "sku": "commuter-one",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Merchant-confirmed synthetic specification: Package contains one backpack only. The water bottle shown is a styling prop and is NOT included. The fabric is suitable for light rain only, not immersion or heavy rain. Laptop sleeve dimensions and device compatibility have not been confirmed.",
+        "revision": 1,
+        "hash": "bc5a21ada8cfdfc3422e9dc5a8beac6bc8e046938c926a29d2d573434b3d2927",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:43:45.643Z"
+      },
+      {
+        "id": "99238bee-aa33-443d-afa8-9dc889dfd1d0",
+        "sku": "commuter-one",
+        "kind": "image",
+        "label": "Product image · AI-generated demo",
+        "text": "AI-generated demonstration image. Only visible objects may be inferred.",
+        "revision": 1,
+        "hash": "4e89bc1bafde96e105b734c0e34e6dd7841f573420578a2747b819a51d3e7854",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:43:45.643Z",
+        "imageKey": "fixture:commuter-one",
+        "mimeType": "image/png"
+      },
+      {
+        "id": "64216402-fc07-4273-85c8-6f0bb92cde42",
+        "sku": "commuter-one",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "Will a 16-inch laptop fit?",
+        "revision": 1,
+        "hash": "36a39cbfeacb13912e6e5279af7d950a87431a9f9be53107bf05126a142623d9",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:43:45.643Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 21494,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "issue-waterproof-unsupported",
+        "title": "Unsupported 100% waterproof claim",
+        "type": "unsupported_claim",
+        "status": "repairable",
+        "explanation": "The shortDescription claims 100% waterproof protection, but the specification states the fabric is suitable for light rain only, not immersion or heavy rain.",
+        "evidenceIds": [
+          "b2420b51-39e3-48ec-8ef7-338636f32361"
+        ]
+      },
+      {
+        "id": "issue-water-bottle-prop",
+        "title": "Water bottle accessory not included",
+        "type": "accessory",
+        "status": "repairable",
+        "explanation": "The product image shows a water bottle alongside the backpack, but the specification confirms the package contains one backpack only and the water bottle is a styling prop.",
+        "evidenceIds": [
+          "b2420b51-39e3-48ec-8ef7-338636f32361",
+          "99238bee-aa33-443d-afa8-9dc889dfd1d0"
+        ]
+      },
+      {
+        "id": "issue-laptop-compatibility-missing",
+        "title": "Missing laptop sleeve dimensions and compatibility",
+        "type": "missing_info",
+        "status": "needs_info",
+        "explanation": "Customer feedback asks if a 16-inch laptop will fit, but laptop sleeve dimensions and device compatibility have not been confirmed by the merchant.",
+        "evidenceIds": [
+          "b2420b51-39e3-48ec-8ef7-338636f32361",
+          "64216402-fc07-4273-85c8-6f0bb92cde42"
+        ],
+        "question": "What are the internal dimensions of the laptop sleeve and what laptop sizes are supported?"
+      }
+    ],
+    "changes": [
+      {
+        "field": "shortDescription",
+        "value": "Your everyday carry, ready for anything. Suitable for light rain only.",
+        "claims": [
+          {
+            "text": "Your everyday carry, ready for anything.",
+            "evidenceIds": [
+              "b2420b51-39e3-48ec-8ef7-338636f32361"
+            ]
+          },
+          {
+            "text": "Suitable for light rain only.",
+            "evidenceIds": [
+              "b2420b51-39e3-48ec-8ef7-338636f32361"
+            ]
+          }
+        ],
+        "issueIds": [
+          "issue-waterproof-unsupported"
+        ]
+      },
+      {
+        "field": "imageCaption",
+        "value": "Commuter backpack shown next to a water bottle used as a styling prop.",
+        "claims": [
+          {
+            "text": "Commuter backpack shown next to a water bottle used as a styling prop.",
+            "evidenceIds": [
+              "b2420b51-39e3-48ec-8ef7-338636f32361",
+              "99238bee-aa33-443d-afa8-9dc889dfd1d0"
+            ]
+          }
+        ],
+        "issueIds": [
+          "issue-water-bottle-prop"
+        ]
+      },
+      {
+        "field": "faq",
+        "value": "What comes with my order? Package contains one backpack only. The water bottle shown is a styling prop and is not included.",
+        "claims": [
+          {
+            "text": "Package contains one backpack only.",
+            "evidenceIds": [
+              "b2420b51-39e3-48ec-8ef7-338636f32361"
+            ]
+          },
+          {
+            "text": "The water bottle shown is a styling prop and is not included.",
+            "evidenceIds": [
+              "b2420b51-39e3-48ec-8ef7-338636f32361"
+            ]
+          }
+        ],
+        "issueIds": [
+          "issue-water-bottle-prop"
+        ]
+      }
+    ]
+  },
+  "checks": [],
+  "metrics": {
+    "calls": 1,
+    "tools": 0,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 3025,
+      "output": 903,
+      "estimatedUsd": 0.01131
+    },
+    "validationNotes": []
+  }
+}

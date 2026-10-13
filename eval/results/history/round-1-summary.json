@@ -1,0 +1,29 @@
+{
+  "at": "2026-10-12T16:32:26.888Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "1a6d6f164cc4c016983db905d1d336f04d4ead8bf9a1b2bff2336827e71c7510",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "split": "development",
+  "modes": [
+    {
+      "mode": "workflow",
+      "total": 18,
+      "completed": 11,
+      "failed": 7,
+      "p50Ms": 25780,
+      "p95Ms": 91291,
+      "estimatedUsd": 0.23015399999999997
+    },
+    {
+      "mode": "baseline",
+      "total": 18,
+      "completed": 16,
+      "failed": 2,
+      "p50Ms": 7694,
+      "p95Ms": 41767,
+      "estimatedUsd": 0.1043475
+    }
+  ],
+  "humanSemanticReview": "Pending. Completion is not accuracy. Failures are included in latency.",
+  "execution": "Local evaluation runner; not Cloud Run latency."
+}

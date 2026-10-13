@@ -1,0 +1,105 @@
+{
+  "caseId": "05-1",
+  "mode": "baseline",
+  "sku": "desk-light",
+  "split": "development",
+  "category": "quality_fulfillment",
+  "expected": "human_action",
+  "at": "2026-10-12T16:45:57.399Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "A desk lamp for everyday work.",
+      "imageCaption": "Lamp pictured with cable.",
+      "faq": "Includes everything you need."
+    },
+    "evidence": [
+      {
+        "id": "5f9bb6af-3408-4cda-8053-aa922ce65004",
+        "sku": "desk-light",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Synthetic merchant specification: One lamp included. USB-C cable and power adapter are not included. Input power 5V. No battery. No waterproof certification.",
+        "revision": 1,
+        "hash": "46a2569cf0437e257d6e61760db1c28d24af2523b9656139ed5bd9640b42f284",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:45:57.399Z"
+      },
+      {
+        "id": "d5b5ef4d-bdda-4d4b-9de9-c65b742f258e",
+        "sku": "desk-light",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "The hinge snapped after a week.",
+        "revision": 1,
+        "hash": "8bee574706ce6fed047abfe5cb60950b708d9039039e05dcabe62c6534f89120",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:45:57.399Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 5856,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "faq-cable-included-claim",
+        "title": "FAQ falsely claims everything needed is included",
+        "type": "accessory",
+        "status": "repairable",
+        "explanation": "The FAQ states 'Includes everything you need,' but the confirmed merchant specification states that the USB-C cable and power adapter are not included.",
+        "evidenceIds": [
+          "5f9bb6af-3408-4cda-8053-aa922ce65004"
+        ]
+      },
+      {
+        "id": "feedback-hinge-quality",
+        "title": "Customer report of snapped hinge",
+        "type": "quality",
+        "status": "human_action",
+        "explanation": "A customer reported that the hinge snapped after one week. This is a hardware durability issue requiring physical quality investigation rather than a product copy change.",
+        "evidenceIds": [
+          "d5b5ef4d-bdda-4d4b-9de9-c65b742f258e"
+        ]
+      }
+    ],
+    "changes": [
+      {
+        "field": "faq",
+        "value": "Includes one lamp. USB-C cable and power adapter are not included.",
+        "claims": [
+          {
+            "text": "Includes one lamp.",
+            "evidenceIds": [
+              "5f9bb6af-3408-4cda-8053-aa922ce65004"
+            ]
+          },
+          {
+            "text": "USB-C cable and power adapter are not included.",
+            "evidenceIds": [
+              "5f9bb6af-3408-4cda-8053-aa922ce65004"
+            ]
+          }
+        ],
+        "issueIds": [
+          "faq-cable-included-claim"
+        ]
+      }
+    ]
+  },
+  "checks": [],
+  "metrics": {
+    "calls": 1,
+    "tools": 0,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 1609,
+      "output": 444,
+      "estimatedUsd": 0.0057435
+    },
+    "validationNotes": []
+  }
+}

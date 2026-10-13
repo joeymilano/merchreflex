@@ -4,6 +4,8 @@
 
 An evidence-grounded product-page repair prototype for AI Builder Cup 2026. New code built independently for this competition. All product facts and feedback in the demonstration are synthetic; the included image is AI-generated.
 
+[Live demo](https://merchreflex-927668522599.asia-southeast1.run.app) · [Zcode handoff](HANDOFF_ZCODE.md) · [Measured validation](docs/VALIDATION.md)
+
 ## What works
 
 - Live Gemini text and image interpretation with read-only tool calls
@@ -38,7 +40,7 @@ Tests inject an in-memory store; they do not consume model credits. Run the thre
 
 ## Deploy
 
-Use the included Dockerfile and `scripts/deploy.sh`. Runtime uses a dedicated service account with Firestore data access, model access, and object access only to the private evidence bucket. No service-account keys are required.
+Use the included Dockerfile and `scripts/deploy.sh`. Set `APP_ORIGIN` explicitly to the public browser URL. The script deploys a zero-traffic candidate; smoke-test it before promoting its exact revision. Runtime uses a dedicated service account with Firestore data access, model access, and object access only to the private evidence bucket. No service-account keys are required.
 
 Set the deployed service URL as `APP_ORIGIN`, and keep the public app accessible during judging. The application has a global model budget and daily quotas, but cloud billing alerts are not hard spending caps. Inspect actual billing daily.
 

@@ -7,8 +7,8 @@ Internal target: October 17, 2026, 20:00 Asia/Shanghai. The Roadmap shows Octobe
 ## Required deliverables
 
 - [ ] Live Cloud Run application independently tested
-- [ ] Public GitHub source, lockfile, reproduction steps, attribution and limitations
-- [ ] Official template deck exported to PDF, less than 5 MB
+- [x] Public GitHub source, lockfile, reproduction steps, attribution and limitations
+- [x] Official template working draft exported to PDF, 16 pages, 646,475 bytes (final results and video pending)
 - [ ] Public English video, short cut 2:55, duration conflict clarified if possible
 - [ ] English description under 1,024 characters
 - [ ] All links opened from a fresh browser

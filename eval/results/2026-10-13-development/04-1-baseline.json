@@ -1,0 +1,86 @@
+{
+  "caseId": "04-1",
+  "mode": "baseline",
+  "sku": "desk-light",
+  "split": "development",
+  "category": "conflict",
+  "expected": "conflict",
+  "at": "2026-10-12T16:45:33.040Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "A desk lamp for everyday work.",
+      "imageCaption": "Lamp pictured with cable.",
+      "faq": "Includes everything you need."
+    },
+    "evidence": [
+      {
+        "id": "c68fcfcd-addf-4bb6-bc1d-b4009139791a",
+        "sku": "desk-light",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Synthetic merchant specification: One lamp included. USB-C cable and power adapter are not included. Input power 5V. No battery. No waterproof certification.",
+        "revision": 1,
+        "hash": "46a2569cf0437e257d6e61760db1c28d24af2523b9656139ed5bd9640b42f284",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:45:33.040Z"
+      },
+      {
+        "id": "e1ccaf57-baf3-43a7-8167-f583451f14f8",
+        "sku": "desk-light",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "Does the lamp come with a cable?",
+        "revision": 1,
+        "hash": "375f2d1a73fb57a4e1e9e5225480cdb60097f160393b6e090f9b6b664975d109",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:45:33.040Z"
+      },
+      {
+        "id": "93bb8f76-262b-40dd-b604-24adb289e44e",
+        "sku": "desk-light",
+        "kind": "spec",
+        "label": "Conflicting merchant specification · synthetic",
+        "text": "Merchant-confirmed synthetic specification: The USB-C cable IS included in every lamp package.",
+        "revision": 1,
+        "hash": "e0452c5f93baf673c52b25f01bbabbd23e6998dec3939b4a4d68bbbeb5b251e5",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:45:33.040Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 4482,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "cable-inclusion-conflict",
+        "title": "Conflicting merchant specifications regarding USB-C cable inclusion",
+        "type": "conflict",
+        "status": "conflict",
+        "explanation": "Two merchant specification records directly contradict each other regarding whether the USB-C cable is included in the package. One specification states the USB-C cable is not included, while another confirmed specification states the USB-C cable is included in every package.",
+        "evidenceIds": [
+          "c68fcfcd-addf-4bb6-bc1d-b4009139791a",
+          "93bb8f76-262b-40dd-b604-24adb289e44e"
+        ],
+        "question": "Is the USB-C cable included with the desk lamp package or sold separately?"
+      }
+    ],
+    "changes": []
+  },
+  "checks": [],
+  "metrics": {
+    "calls": 1,
+    "tools": 0,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 1837,
+      "output": 226,
+      "estimatedUsd": 0.0044505
+    },
+    "validationNotes": []
+  }
+}

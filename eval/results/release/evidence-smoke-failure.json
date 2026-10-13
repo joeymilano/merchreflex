@@ -1,0 +1,9 @@
+{
+  "at": "2026-10-13T02:44:42.534Z",
+  "revision": "merchreflex-00008-jul",
+  "status": "failed",
+  "stage": "First audit, before source flip or image upload",
+  "events": ["Inspecting product evidence", "Read-only tools completed · 2", "Proposing minimal changes"],
+  "error": "SERVICE_UNAVAILABLE",
+  "remainingAssertions": "Source mutation, stale approval rejection, reassessment, private upload and cross-SKU checks were not reached."
+}

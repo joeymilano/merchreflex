@@ -1,0 +1,179 @@
+{
+  "caseId": "03-1",
+  "mode": "workflow",
+  "sku": "commuter-one",
+  "split": "development",
+  "category": "missing_info",
+  "expected": "needs_info",
+  "at": "2026-10-12T16:43:11.610Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "Your everyday carry, ready for anything. 100% waterproof protection for your daily commute.",
+      "imageCaption": "Everything you need for the everyday journey.",
+      "faq": "What comes with my order? Your Commuter One is ready for your next adventure."
+    },
+    "evidence": [
+      {
+        "id": "9082ad5f-a7f9-4f3b-8fe0-c16475085193",
+        "sku": "commuter-one",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Merchant-confirmed synthetic specification: Package contains one backpack only. The water bottle shown is a styling prop and is NOT included. The fabric is suitable for light rain only, not immersion or heavy rain. Laptop sleeve dimensions and device compatibility have not been confirmed.",
+        "revision": 1,
+        "hash": "bc5a21ada8cfdfc3422e9dc5a8beac6bc8e046938c926a29d2d573434b3d2927",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:43:11.610Z"
+      },
+      {
+        "id": "e105f4f0-cdef-4a91-ab9b-3379a1302d61",
+        "sku": "commuter-one",
+        "kind": "image",
+        "label": "Product image · AI-generated demo",
+        "text": "AI-generated demonstration image. Only visible objects may be inferred.",
+        "revision": 1,
+        "hash": "4e89bc1bafde96e105b734c0e34e6dd7841f573420578a2747b819a51d3e7854",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:43:11.610Z",
+        "imageKey": "fixture:commuter-one",
+        "mimeType": "image/png"
+      },
+      {
+        "id": "edf94d89-7ce3-49d0-a2ea-689f0d887487",
+        "sku": "commuter-one",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "Will a 16-inch laptop fit?",
+        "revision": 1,
+        "hash": "36a39cbfeacb13912e6e5279af7d950a87431a9f9be53107bf05126a142623d9",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:43:11.610Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 58106,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "waterproof-claim-unsupported",
+        "title": "Waterproof claim conflicts with merchant specification",
+        "type": "unsupported_claim",
+        "status": "repairable",
+        "explanation": "The current short description claims '100% waterproof protection', but the merchant specification states the fabric is suitable for light rain only, not immersion or heavy rain.",
+        "evidenceIds": [
+          "9082ad5f-a7f9-4f3b-8fe0-c16475085193"
+        ]
+      },
+      {
+        "id": "package-contents-clarification",
+        "title": "FAQ does not clarify package contents or excluded styling prop",
+        "type": "accessory",
+        "status": "repairable",
+        "explanation": "The image shows a water bottle beside the backpack, but the specification confirms the package contains one backpack only and the water bottle is an excluded styling prop.",
+        "evidenceIds": [
+          "9082ad5f-a7f9-4f3b-8fe0-c16475085193",
+          "e105f4f0-cdef-4a91-ab9b-3379a1302d61"
+        ]
+      },
+      {
+        "id": "image-prop-clarification",
+        "title": "Image caption does not clarify that water bottle prop is not included",
+        "type": "accessory",
+        "status": "repairable",
+        "explanation": "The image displays a backpack alongside a water bottle prop, requiring clarification that the water bottle is not included.",
+        "evidenceIds": [
+          "9082ad5f-a7f9-4f3b-8fe0-c16475085193",
+          "e105f4f0-cdef-4a91-ab9b-3379a1302d61"
+        ]
+      },
+      {
+        "id": "laptop-compatibility-missing",
+        "title": "Laptop sleeve dimensions and device compatibility missing",
+        "type": "missing_info",
+        "status": "needs_info",
+        "explanation": "Customer inquiry asks if a 16-inch laptop will fit, but laptop sleeve dimensions and device compatibility are unconfirmed in the merchant specifications.",
+        "evidenceIds": [
+          "9082ad5f-a7f9-4f3b-8fe0-c16475085193",
+          "edf94d89-7ce3-49d0-a2ea-689f0d887487"
+        ],
+        "question": "What are the laptop sleeve dimensions and supported device sizes?"
+      }
+    ],
+    "changes": [
+      {
+        "field": "shortDescription",
+        "value": "Your everyday carry, ready for daily commutes. The fabric is suitable for light rain only, not immersion or heavy rain.",
+        "claims": [
+          {
+            "text": "The fabric is suitable for light rain only, not immersion or heavy rain.",
+            "evidenceIds": [
+              "9082ad5f-a7f9-4f3b-8fe0-c16475085193"
+            ]
+          }
+        ],
+        "issueIds": [
+          "waterproof-claim-unsupported"
+        ]
+      },
+      {
+        "field": "imageCaption",
+        "value": "Commuter backpack shown next to a water bottle prop that is not included.",
+        "claims": [
+          {
+            "text": "Commuter backpack shown next to a water bottle prop that is not included.",
+            "evidenceIds": [
+              "9082ad5f-a7f9-4f3b-8fe0-c16475085193",
+              "e105f4f0-cdef-4a91-ab9b-3379a1302d61"
+            ]
+          }
+        ],
+        "issueIds": [
+          "image-prop-clarification"
+        ]
+      },
+      {
+        "field": "faq",
+        "value": "What comes with my order? Package contains one backpack only. The water bottle shown is a styling prop and is not included.",
+        "claims": [
+          {
+            "text": "Package contains one backpack only.",
+            "evidenceIds": [
+              "9082ad5f-a7f9-4f3b-8fe0-c16475085193"
+            ]
+          },
+          {
+            "text": "The water bottle shown is a styling prop and is not included.",
+            "evidenceIds": [
+              "9082ad5f-a7f9-4f3b-8fe0-c16475085193",
+              "e105f4f0-cdef-4a91-ab9b-3379a1302d61"
+            ]
+          }
+        ],
+        "issueIds": [
+          "package-contents-clarification"
+        ]
+      }
+    ]
+  },
+  "checks": [
+    "Allowed fields only",
+    "Active, same-product evidence",
+    "Complete replacement text checked by Gemini",
+    "Human approval still required"
+  ],
+  "metrics": {
+    "calls": 3,
+    "tools": 2,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 8486,
+      "output": 1340,
+      "estimatedUsd": 0.022779
+    },
+    "validationNotes": []
+  }
+}

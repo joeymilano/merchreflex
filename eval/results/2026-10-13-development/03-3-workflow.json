@@ -1,0 +1,184 @@
+{
+  "caseId": "03-3",
+  "mode": "workflow",
+  "sku": "commuter-one",
+  "split": "development",
+  "category": "missing_info",
+  "expected": "needs_info",
+  "at": "2026-10-12T16:44:31.844Z",
+  "model": "gemini-3.8-flash",
+  "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+  "caseFileHash": "44b0d074a4e861db21743204cfaaf97db64d818a11c5c15ec48ff2b1aef3a7fb",
+  "record": {
+    "page": {
+      "shortDescription": "Your everyday carry, ready for anything. 100% waterproof protection for your daily commute.",
+      "imageCaption": "Everything you need for the everyday journey.",
+      "faq": "What comes with my order? Your Commuter One is ready for your next adventure."
+    },
+    "evidence": [
+      {
+        "id": "72043a8e-bddb-4cf0-b6e9-c36f90724abf",
+        "sku": "commuter-one",
+        "kind": "spec",
+        "label": "Merchant specification · synthetic",
+        "text": "Merchant-confirmed synthetic specification: Package contains one backpack only. The water bottle shown is a styling prop and is NOT included. The fabric is suitable for light rain only, not immersion or heavy rain. Laptop sleeve dimensions and device compatibility have not been confirmed.",
+        "revision": 1,
+        "hash": "bc5a21ada8cfdfc3422e9dc5a8beac6bc8e046938c926a29d2d573434b3d2927",
+        "confirmed": true,
+        "createdAt": "2026-10-12T16:44:31.844Z"
+      },
+      {
+        "id": "48e5740b-46f3-4165-ae24-727e3c18b354",
+        "sku": "commuter-one",
+        "kind": "image",
+        "label": "Product image · AI-generated demo",
+        "text": "AI-generated demonstration image. Only visible objects may be inferred.",
+        "revision": 1,
+        "hash": "4e89bc1bafde96e105b734c0e34e6dd7841f573420578a2747b819a51d3e7854",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:44:31.844Z",
+        "imageKey": "fixture:commuter-one",
+        "mimeType": "image/png"
+      },
+      {
+        "id": "e470031f-409a-4a60-851d-2244e1f53a76",
+        "sku": "commuter-one",
+        "kind": "feedback",
+        "label": "Evaluation feedback · synthetic",
+        "text": "Does my large work laptop fit inside the sleeve?",
+        "revision": 1,
+        "hash": "8d9cb90de7c35a9af856144bd62dc3e8e0fe907e051a06085a8561d11e36d54a",
+        "confirmed": false,
+        "createdAt": "2026-10-12T16:44:31.844Z"
+      }
+    ]
+  },
+  "humanReview": "pending",
+  "durationMs": 61194,
+  "status": "completed",
+  "proposal": {
+    "issues": [
+      {
+        "id": "commuter-waterproof-claim",
+        "title": "Waterproof claim conflicts with specification",
+        "type": "unsupported_claim",
+        "status": "repairable",
+        "explanation": "The short description claims 100% waterproof protection, but the merchant specification states the fabric is suitable for light rain only, not immersion or heavy rain.",
+        "evidenceIds": [
+          "72043a8e-bddb-4cf0-b6e9-c36f90724abf"
+        ]
+      },
+      {
+        "id": "commuter-bottle-accessory",
+        "title": "Water bottle shown is not included",
+        "type": "accessory",
+        "status": "repairable",
+        "explanation": "The product image displays a water bottle alongside the backpack, which can lead customers to believe it is included. The specification confirms package contains one backpack only and the water bottle is a styling prop.",
+        "evidenceIds": [
+          "72043a8e-bddb-4cf0-b6e9-c36f90724abf",
+          "48e5740b-46f3-4165-ae24-727e3c18b354"
+        ]
+      },
+      {
+        "id": "commuter-package-contents",
+        "title": "FAQ does not clarify package contents",
+        "type": "unsupported_claim",
+        "status": "repairable",
+        "explanation": "The FAQ asks what comes with the order but gives a vague answer rather than stating that only the backpack is included and the water bottle is not.",
+        "evidenceIds": [
+          "72043a8e-bddb-4cf0-b6e9-c36f90724abf"
+        ]
+      },
+      {
+        "id": "commuter-laptop-compatibility",
+        "title": "Laptop sleeve dimensions and device compatibility unconfirmed",
+        "type": "missing_info",
+        "status": "needs_info",
+        "explanation": "Customer feedback asks whether large work laptops fit inside the sleeve, but laptop sleeve dimensions and device compatibility have not been confirmed in the specification.",
+        "evidenceIds": [
+          "72043a8e-bddb-4cf0-b6e9-c36f90724abf",
+          "e470031f-409a-4a60-851d-2244e1f53a76"
+        ],
+        "question": "What are the exact dimensions and device compatibility details for the laptop sleeve?"
+      }
+    ],
+    "changes": [
+      {
+        "field": "shortDescription",
+        "value": "Your everyday carry, ready for anything. Fabric is suitable for light rain only.",
+        "claims": [
+          {
+            "text": "Fabric is suitable for light rain only.",
+            "evidenceIds": [
+              "72043a8e-bddb-4cf0-b6e9-c36f90724abf"
+            ]
+          }
+        ],
+        "issueIds": [
+          "commuter-waterproof-claim"
+        ]
+      },
+      {
+        "field": "imageCaption",
+        "value": "Commuter backpack shown next to a water bottle prop. Water bottle is not included.",
+        "claims": [
+          {
+            "text": "Commuter backpack shown next to a water bottle prop.",
+            "evidenceIds": [
+              "48e5740b-46f3-4165-ae24-727e3c18b354",
+              "72043a8e-bddb-4cf0-b6e9-c36f90724abf"
+            ]
+          },
+          {
+            "text": "Water bottle is not included.",
+            "evidenceIds": [
+              "72043a8e-bddb-4cf0-b6e9-c36f90724abf"
+            ]
+          }
+        ],
+        "issueIds": [
+          "commuter-bottle-accessory"
+        ]
+      },
+      {
+        "field": "faq",
+        "value": "What comes with my order? Package contains one backpack only. The water bottle shown is not included.",
+        "claims": [
+          {
+            "text": "Package contains one backpack only.",
+            "evidenceIds": [
+              "72043a8e-bddb-4cf0-b6e9-c36f90724abf"
+            ]
+          },
+          {
+            "text": "The water bottle shown is not included.",
+            "evidenceIds": [
+              "72043a8e-bddb-4cf0-b6e9-c36f90724abf"
+            ]
+          }
+        ],
+        "issueIds": [
+          "commuter-bottle-accessory",
+          "commuter-package-contents"
+        ]
+      }
+    ]
+  },
+  "checks": [
+    "Allowed fields only",
+    "Active, same-product evidence",
+    "Complete replacement text checked by Gemini",
+    "Human approval still required"
+  ],
+  "metrics": {
+    "calls": 3,
+    "tools": 2,
+    "promptHash": "4baa4a8ec4ea1047b7434a75925ddded503d74809a12a5e9bc88c114cc92ff0c",
+    "usage": {
+      "input": 8469,
+      "output": 1307,
+      "estimatedUsd": 0.022506
+    },
+    "validationNotes": []
+  }
+}
