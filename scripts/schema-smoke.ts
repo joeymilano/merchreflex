@@ -1,14 +1,11 @@
-import { GoogleGenAI, ThinkingLevel } from "@google/genai";
+import { ThinkingLevel } from "@google/genai";
 import { MODEL_SCHEMA } from "../lib/model-schema";
+import { genAiClient } from "../lib/agent";
 import { ProposalSchema } from "../lib/types";
-const ai = new GoogleGenAI({
-  vertexai: true,
-  project: process.env.GOOGLE_CLOUD_PROJECT,
-  location: "global",
-});
+const ai = genAiClient();
 async function main() {
   const r = await ai.models.generateContent({
-    model: "gemini-3.8-flash",
+    model: process.env.GEMINI_MODEL || "gemini-3.8-flash",
     contents:
       "Return empty issues and empty changes. There is no evidence, so do not invent any.",
     config: {

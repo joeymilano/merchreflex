@@ -1,11 +1,8 @@
-import { GoogleGenAI, Type } from "@google/genai";
+import { Type } from "@google/genai";
 import { readFile, writeFile, mkdir } from "node:fs/promises";
+import { genAiClient, GENAI_ENDPOINT } from "../lib/agent";
 async function main() {
-  const ai = new GoogleGenAI({
-    vertexai: true,
-    project: "merchreflex-cup-2026",
-    location: "global",
-  });
+  const ai = genAiClient();
   const model = process.env.GEMINI_MODEL || "gemini-3.8-flash";
   const tests = [
     {
@@ -64,6 +61,7 @@ async function main() {
       const result = {
         test: t.name,
         model,
+        endpoint: GENAI_ENDPOINT,
         text: r.text,
         tools: r.functionCalls,
         usage: r.usageMetadata,

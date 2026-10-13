@@ -11,6 +11,13 @@ These are execution results, not a claim of semantic accuracy, merchant adoption
 - 23 local domain/integrity tests pass. Build and typecheck pass.
 - The 12 holdout cases have NOT been evaluated or used for prompt tuning.
 
+## Pending revision (13 October, later session — designed, not yet deployed)
+
+- Cost decision: model calls move from billable Vertex AI to the free-tier Gemini API using an AI Studio API key, per the owner's instruction that all Google service usage stays within free quota. A gcloud-created project API key was tested and rejected by `generativelanguage.googleapis.com` (`API_KEY_INVALID`), consistent with Gemini API keys having to be minted from AI Studio. The rejected key was deleted. Configuration is dual-mode: `GEMINI_API_KEY` selects the Gemini API; its absence falls back to Vertex ADC, so the change is reversible.
+- Reliability: `lib/agent.ts` now retries transient model errors (HTTP 429/500/502/503/504 or `UNAVAILABLE`/`RESOURCE_EXHAUSTED`/`overloaded` messages) with at most one retry per call and two per run, 700 ms/1400 ms backoff, only when at least 20 s remain before the deadline. Retried attempts consume the same per-run model-call budget, and `retries`/`retryNotes` are persisted on both completed and failed runs. Control-flow, abort and non-transient errors are never retried. Four unit tests cover classification and the deadline-aware decision.
+- Prompt/config version moves to `2026-10-13.5` and the fingerprint now includes the endpoint (`vertexai` or `gemini-api-key`), so runs record which endpoint produced them. Prompts themselves are unchanged.
+- 27 local tests pass (23 prior + 4 retry). Build and typecheck pass. Vertex-based history above is preserved but MUST NOT be pooled with results from the free-tier endpoint revision.
+
 ## Latest development evaluation
 
 [Raw paired results and summary](../eval/results/2026-10-13-development/summary.json). Same model, evidence and safe-generation prompt; baseline uses a single response without the workflow's tools and additional validator. Compare content quality separately from execution features.

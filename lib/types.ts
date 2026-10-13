@@ -91,6 +91,8 @@ export type Run = {
   model: string;
   promptHash: string;
   calls: number;
+  retries?: number;
+  retryNotes?: string[];
   tools: number;
   usage: { input: number; output: number; estimatedUsd: number };
   durationMs?: number;
