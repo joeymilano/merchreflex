@@ -18,6 +18,17 @@ These are execution results, not a claim of semantic accuracy, merchant adoption
 - Prompt/config version moves to `2026-10-13.5` and the fingerprint now includes the endpoint (`vertexai` or `gemini-api-key`), so runs record which endpoint produced them. Prompts themselves are unchanged.
 - 27 local tests pass (23 prior + 4 retry). Build and typecheck pass. Vertex-based history above is preserved but MUST NOT be pooled with results from the free-tier endpoint revision.
 
+## Free-tier billing findings (13 October, evening session)
+
+- The owner's AI Studio account is a **prepay-credits account**. A `merchreflex-cup-2026` AI Studio key works on the **free tier only while the project has billing unlinked**; with billing linked the key immediately moves to paid tiers and fails with `402 prepayment credits are depleted` (`RESOURCE_EXHAUSTED`), since no credits were ever purchased. Verified experimentally in both directions.
+- A gcloud key was rejected (`API_KEY_INVALID`) — keys must be created in AI Studio (sources: Google AI Dev Forum / Cloud Community reports; `ai.google.dev/gemini-api/docs/billing`).
+- Compatibility smoke on the free tier PASSED: text, inline image, function calling (`ANY` mode) and `responseJsonSchema` with MODEL_SCHEMA all work on `gemini-3.8-flash` via the key. One transient 503 during schema smoke was retried manually and passed — this is exactly the failure class the retry change covers.
+- 402 depleted-credit errors match the `RESOURCE_EXHAUSTED` message pattern and were initially misclassified as retryable; `isTransientModelError` now short-circuits on "credits are depleted" (test added; 28 local tests pass).
+- **Structural conflict, empirically proven**: Cloud Run serving, deploys and GCS require billing linked; the Gemini free tier requires billing unlinked. After unlinking, the public service returned platform 503/429 within minutes. Pure-$0 with the current stack is therefore impossible.
+- Reconciliation adopted (commit `61a5752`, revisions through `merchreflex-00012-his`): billing stays **linked**; the key is deployed as a plain env var (Secret Manager binding removed — it cannot boot unlinked anyway); the billable Vertex path is taken off traffic (00008) and the `aiaplatform.googleapis.com` API is disabled outright as a hard spend guard. Serving/Firestore run inside Always Free quotas (¥0); model calls fail safely with 402 (no retry, honest error) until prepaid credits exist. **The owner's remaining decision: purchase AI Studio prepaid credits (minimum $5) to reactivate the model path — estimated remaining-acceptance usage under ~$1 and judging-period usage ~$1–2 — or provide an alternative free-quota account. No credits were purchased on the owner's behalf.**
+- GCS evidence uploads bill fractions of a cent on the linked account (asia-southeast1 has no free storage); all other paths are ¥0 at demo scale.
+- Deployment procedure for future revisions: short billing-link window → deploy + traffic switch → verify; aiplatform stays disabled.
+
 ## Latest development evaluation
 
 [Raw paired results and summary](../eval/results/2026-10-13-development/summary.json). Same model, evidence and safe-generation prompt; baseline uses a single response without the workflow's tools and additional validator. Compare content quality separately from execution features.
